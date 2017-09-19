@@ -3,6 +3,10 @@ const Sequelize = require('sequelize')
 const db = require('../db')
 
 const User = db.define('user', {
+  name: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
   email: {
     type: Sequelize.STRING,
     unique: true,
@@ -16,6 +20,14 @@ const User = db.define('user', {
   },
   googleId: {
     type: Sequelize.STRING
+  },
+  isAdmin: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false
+  },
+  changePassword: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false
   }
 })
 
@@ -29,8 +41,8 @@ User.prototype.correctPassword = function (candidatePwd) {
 }
 
 /**
- * classMethods
- */
+* classMethods
+*/
 User.generateSalt = function () {
   return crypto.randomBytes(16).toString('base64')
 }
@@ -40,8 +52,8 @@ User.encryptPassword = function (plainText, salt) {
 }
 
 /**
- * hooks
- */
+* hooks
+*/
 const setSaltAndPassword = user => {
   if (user.changed('password')) {
     user.salt = User.generateSalt()
