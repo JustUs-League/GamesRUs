@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { fetchReviews, addReview } from '../../store/review'
 import { fetchProduct, fetchProducts } from '../../store'
@@ -32,8 +31,8 @@ class ReviewList extends Component {
 
   componentWillReceiveProps (newProps) {
 
-    if (newProps.match.params.id !== this.props.match.params.id) {
-    }
+    // if (newProps.match.params.id !== this.props.match.params.id) {
+    // }
     this.setState({
       product: newProps.retrievedProduct
     })
@@ -42,8 +41,8 @@ class ReviewList extends Component {
   render () {
     const { product, review } = this.state
     const { isLoggedIn, currentUser, products} = this.props
-    console.log(isLoggedIn)
-    if(!product.id ) return <div></div>
+
+    if (!product.id ) return <div />
     // if(!currentUser.id) return <div/>
     return (
       <div className="container">
@@ -76,14 +75,15 @@ class ReviewList extends Component {
               placeholder="Review Content"
               onChange={ event => this.setState({review: {content: event.target.value}}) }
             />
-            <select name="rating"
+            <select
+            name="rating"
             defaultValue=""
             onChange={ event => this.setState({review: {rating: event.target.value}}) }
             required>
               <option value="" disabled>(Select a Rating)</option>
-              <option key='1' value="1">1</option>
-              <option key='2' value="2">2</option>
-              <option key='3' value="3">3</option>
+              <option key="1" value="1">1</option>
+              <option key="2" value="2">2</option>
+              <option key="3" value="3">3</option>
             </select>
           </li>
         </ul>

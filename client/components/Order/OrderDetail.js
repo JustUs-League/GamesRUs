@@ -38,16 +38,16 @@ class OrderDetail extends React.Component {
     if (!order.id) return <div/> // if order has yet to load or is invalid
 
     return (
-      <div className='container'>
-        <div className='row'>
-          <div className='col-lg-6 col-lg-offset-3'>
+      <div className="container">
+        <div className="row">
+          <div className="col-lg-6 col-lg-offset-3">
             <OrderItem order={order} key={order.id} />
           </div>
 
-          <div className='row'>
-            <div className='col-lg-6 col-lg-offset-3'>
-              <ul className='list-group'>
-                <li className='list-group-item'>
+          <div className="row">
+            <div className="col-lg-6 col-lg-offset-3">
+              <ul className="list-group">
+                <li className="list-group-item">
 
                   <li> Shipping Address: </li>
                   <li>
@@ -64,14 +64,14 @@ class OrderDetail extends React.Component {
             </div>
           </div>
 
-          <div className='row heading text-center'>
-            <div className='col-lg-6 col-lg-offset-3'>
+          <div className="row heading text-center">
+            <div className="col-lg-6 col-lg-offset-3">
               <div>ORDER ITEMS</div>
             </div>
           </div>
 
-          <div className='row'>
-            <div className='col-lg-6 col-lg-offset-3'>
+          <div className="row">
+            <div className="col-lg-6 col-lg-offset-3">
               {
                 order.orderItems.map(item => {
                   return <Items key={item.id} item={item} />

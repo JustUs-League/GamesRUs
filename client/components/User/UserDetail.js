@@ -27,9 +27,9 @@ class UserDetail extends Component {
 
     if (!user.id) return <div />
     return (
-      <div className='container'>
-        <div className='row'>
-          <div className='col-lg-6 col-lg-offset-3'>
+      <div className="container">
+        <div className="row">
+          <div className="col-lg-6 col-lg-offset-3">
             <UserItem user={user} />
             <div>
               <h5>{user.isAdmin ? 'Administrator' : 'Regular User'}</h5>
@@ -44,9 +44,9 @@ class UserDetail extends Component {
               }
             </div>
           </div>
-          <div className='col-lg-6 col-lg-offset-3'>
-            <ul className='list-group'>
-              <li className='list-group-item'>
+          <div className="col-lg-6 col-lg-offset-3">
+            <ul className="list-group">
+              <li className="list-group-item">
                 {
                   orders
                   .filter(order => order.userId === user.id)
@@ -63,11 +63,11 @@ class UserDetail extends Component {
   renderAdminChange () {
     return (
       <div>
-        <select className='form-control' name='isAdmin' defaultValue='' onChange={this.handleAdminChange} required>
-          <option value='' disabled>Administrator?</option>
+        <select className="form-control" name="isAdmin" defaultValue="" onChange={this.handleAdminChange} required>
+          <option value="" disabled>Administrator?</option>
           {
-              adminState.map((isAdmin, i) => (
-                <option key={i} value={isAdmin}>{isAdmin}</option>
+              adminState.map(isAdmin => (
+                <option key={isAdmin} value={isAdmin}>{isAdmin}</option>
               ))
             }
         </select>
@@ -78,11 +78,11 @@ class UserDetail extends Component {
   renderPromptChange () {
     return (
       <div>
-        <select className='form-control' name='prompt' defaultValue='' onChange={this.handlePromptChange} required>
-          <option value='' disabled>Reset Password?</option>
+        <select className="form-control" name="prompt" defaultValue="" onChange={this.handlePromptChange} required>
+          <option value="" disabled>Reset Password?</option>
           {
-              promptState.map((prompt, i) => (
-                <option key={i} value={prompt}>{prompt}</option>
+              promptState.map(prompt => (
+                <option key={prompt} value={prompt}>{prompt}</option>
               ))
             }
         </select>

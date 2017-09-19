@@ -56,12 +56,12 @@ class ProductDetail extends Component {
     return (
       <div className="container">
         <div className="row heading text-center">
-          <h3 className='display-5'>PRODUCT DETAILS</h3>
+          <h3 className="display-5">PRODUCT DETAILS</h3>
         </div>
 
-        <div className="row separator"/>
+        <div className="row separator" />
         <div className="row">
-          <div className='col-xs-6 col-xs-offset-3'>
+          <div className="col-xs-6 col-xs-offset-3">
             {isLoggedIn && currentUser.isAdmin && this.renderProductDetailForm()}
           </div>
         </div>
@@ -75,9 +75,9 @@ class ProductDetail extends Component {
                 {this.renderProductDetail()}
                 ${product.price}
                 {product.quantity
-                  ? <CartBuyButton productId={product.id} price={product.price} productname={product.title}/>
+                  ? <CartBuyButton productId={product.id} price={product.price} productname={product.title} />
                   : <div>Too slow! We're currently out of stock of this item. Check back later</div>}
-                <hr/>
+                <hr />
               </div>
               {this.renderProductDescription()}
               {this.renderProductReviews()}
@@ -93,7 +93,7 @@ class ProductDetail extends Component {
 
   renderProductDetail () {
     const {product} = this.state
-    if (!product) return <div/>
+    if (!product) return <div />
     return (
       <div>
         {this.renderProductMainTitle()}
@@ -103,7 +103,7 @@ class ProductDetail extends Component {
 
   renderProductMainTitle () {
     const {product} = this.state
-    if (!product || !product.images) return <div/>
+    if (!product || !product.images) return <div />
     return ( <h3 className="display-5">{product.title}</h3> )
   }
 
@@ -111,17 +111,17 @@ class ProductDetail extends Component {
     const height = 240
     const width = 320
     const {product} = this.state
-    if (!product.images) return <div/>
+    if (!product.images) return <div />
     return (
       <div className="container-fluid">
-        <ImageWithStatusText imageUrl={product.images} height={height} width={width}/>
+        <ImageWithStatusText imageUrl={product.images} height={height} width={width} />
       </div>
     )
   }
 
   renderProductDescription () {
     const {product} = this.state
-    if (!product.images) return <div/>
+    if (!product.images) return <div />
     return ( <div> {product.description} </div> )
   }
 
@@ -133,7 +133,7 @@ class ProductDetail extends Component {
         <h3>Product Reviews</h3>
         {
           product.reviews
-            .map(review => <ReviewItem review={review} key={review.id}/>)
+            .map(review => <ReviewItem review={review} key={review.id} />)
         }
       </div>
     )
@@ -141,7 +141,7 @@ class ProductDetail extends Component {
 
   renderProductDetailForm () {
     const {product} = this.state
-    if (!product) return <div/>
+    if (!product) return <div />
     return (
       <div className="row">
         <form onSubmit={this.onSubmit}>
@@ -193,7 +193,7 @@ class ProductDetail extends Component {
             value={product.images}
             onChange={evt => this.onProductUpdate({images: evt.target.value})}
           />
-          <button type='submit' className='btn btn-submit'>Submit</button>
+          <button type="submit" className="btn btn-submit">Submit</button>
         </form>
       </div>
     )

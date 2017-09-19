@@ -46,17 +46,17 @@ class OrderItem extends Component {
   renderOrderChange () {
     return (
       <select
-        className='form-control'
-        name='status'
-        defaultValue=''
+        className="form-control"
+        name="status"
+        defaultValue=""
         onChange={this.onChangeHandler}
         required
       >
 
-        <option value='' disabled>Change Order Status</option>
+        <option value="" disabled>Change Order Status</option>
         {
-          orderState.map((status, i) => (
-            <option key={i} value={status}>{status}</option>
+          orderState.map(status => (
+            <option key={status} value={status}>{status}</option>
           ))
         }
       </select>
