@@ -6,15 +6,15 @@ import UserItem from './UserItem'
 
 const UserList = (props) => {
   return (
-    <div className='container'>
-      <div className='row heading text-center'>
-        <div className='col-lg-6 col-lg-offset-3'>
-          <h3 className='display-5'>USER LIST</h3>
+    <div className="container">
+      <div className="row heading text-center">
+        <div className="col-lg-6 col-lg-offset-3">
+          <h3 className="display-5">USER LIST</h3>
         </div>
       </div>
-      <div className='row'>
-        <div className='col-lg-6 col-lg-offset-3'>
-          <ul className='list-group'>
+      <div className="row">
+        <div className="col-lg-6 col-lg-offset-3">
+          <ul className="list-group">
             {
               props.users.map(user => <UserItem key={user.id} user={user} />)
             }

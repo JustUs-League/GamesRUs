@@ -14,13 +14,13 @@ class UserItem extends Component {
   render () {
     const { user } = this.props
     return (
-      <li className='list-group-item'>
+      <li className="list-group-item">
         <div>
-          <NavLink id='user-name' activeClassName='active' to={`/users/${user.id}`}>
+          <NavLink id="user-name" activeClassName="active" to={`/users/${user.id}`}>
             { user.username }
           </NavLink>
-          <button className='btn-remove' onClick={this.handleRemove}>
-            <i className='fa fa-times fa-2x fa-pull-right' />
+          <button className="btn-remove" onClick={this.handleRemove}>
+            <i className="fa fa-times fa-2x fa-pull-right" />
           </button>
         </div>
       </li>

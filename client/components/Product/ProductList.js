@@ -27,16 +27,16 @@ class ProductList extends Component {
   render () {
     const {currentUser, isLoggedIn} = this.props
     return (
-      <div className='container'>
+      <div className="container">
         {isLoggedIn && currentUser.isAdmin &&
         (<div>
-          <div className='row heading text-center'>
-            <div className='col-xs-6 col-xs-offset-3'>
-              <h3 className='display-5'>ADD A NEW PRODUCT</h3>
+          <div className="row heading text-center">
+            <div className="col-xs-6 col-xs-offset-3">
+              <h3 className="display-5">ADD A NEW PRODUCT</h3>
             </div>
           </div>
-          <div className='row'>
-            <div className='col-xs-6 col-xs-offset-3'>
+          <div className="row">
+            <div className="col-xs-6 col-xs-offset-3">
               {this.renderAddProductForm()}
             </div>
           </div>
@@ -55,7 +55,7 @@ class ProductList extends Component {
           </div>
         </div>
 
-        <div className='row'>
+        <div className="row">
           {this.renderProducts()}
         </div>
       </div>
@@ -78,7 +78,7 @@ class ProductList extends Component {
       .filter(this.filterProduct)
       .map(product => {
         return (
-          <ProductCard product={product} key={product.id}/>
+          <ProductCard product={product} key={product.id} />
         )
       })
   }
@@ -92,11 +92,11 @@ class ProductList extends Component {
         <form>
           <div className="col-xs-3 col-xs-offset-3">
             <input
-              name='title'
-              type='text'
-              className='form-control'
-              id='inlineFormInput'
-              placeholder='Product Title'
+              name="title"
+              type="text"
+              className="form-control"
+              id="inlineFormInput"
+              placeholder="Product Title"
               onChange={evt => this.setState({title: evt.target.value})}
               value={this.state.title}
             />
@@ -110,7 +110,7 @@ class ProductList extends Component {
               >
                 <option value="">All Categories</option>
                 {
-                  categories.map(category => <option value={category}>{category}</option>)
+                  categories.map(category => <option key={category} value={category}>{category}</option>)
                 }
               </select>
             </div>
@@ -134,48 +134,48 @@ class ProductList extends Component {
 
       <form onSubmit={this.onSubmit}>
         <input
-          className='form-control'
-          id='form-field'
+          className="form-control"
+          id="form-field"
           value={this.state.title}
           onChange={evt => this.setState({title: evt.target.value})}
-          placeholder='Product Title'
+          placeholder="Product Title"
         />
         <input
-          className='form-control'
-          id='form-field'
+          className="form-control"
+          id="form-field"
           value={this.state.description}
           onChange={evt => this.setState({description: evt.target.value})}
-          placeholder='Product Description'
+          placeholder="Product Description"
         />
         <input
-          className='form-control'
-          id='form-field'
+          className="form-control"
+          id="form-field"
           value={this.state.price}
           onChange={evt => this.setState({price: evt.target.value})}
-          placeholder='Product Price'
+          placeholder="Product Price"
         />
         <input
-          className='form-control'
-          id='form-field'
+          className="form-control"
+          id="form-field"
           value={this.state.quantity}
           onChange={evt => this.setState({quantity: evt.target.value})}
-          placeholder='Product Quantity'
+          placeholder="Product Quantity"
         />
         <input
-          className='form-control'
-          id='form-field'
+          className="form-control"
+          id="form-field"
           value={this.state.category}
           onChange={evt => this.setState({category: evt.target.value})}
-          placeholder='Product Category'
+          placeholder="Product Category"
         />
         <input
-          className='form-control'
-          id='form-field'
+          className="form-control"
+          id="form-field"
           value={this.state.images}
           onChange={evt => this.setState({images: evt.target.value})}
-          placeholder='Product Image'
+          placeholder="Product Image"
         />
-        <button type='submit' className='btn btn-submit'>Submit</button>
+        <button type="submit" className="btn btn-submit">Submit</button>
       </form>
 
     )
