@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
-import {filterProductsByCategory, fetchProducts, singleProduct, makeUserOrder, addToOrder } from "../store";
+import {filterProductsByCategory, fetchProducts, singleProduct, makeUserOrder, addToOrder } from '../store'
 import {Button, Glyphicon} from 'react-bootstrap'
 
 class Products extends Component {
@@ -37,7 +37,7 @@ class Products extends Component {
                   type="text"
                   onChange={(event) => this.props.handleChange(event)}
                   placeholder="category name"
-                className="form-control"/>
+                className="form-control" />
               </form>
             </div>
 
@@ -55,7 +55,7 @@ class Products extends Component {
 
                             <Button
                               bsSize='large'
-                              onClick={()=>{return this.props.addProductOnClick(product)}}>
+                              onClick={() => {return this.props.addProductOnClick(product)}}>
                               <Glyphicon
                                 data-title={product.title}
                                 data-id={product.id}
@@ -72,7 +72,7 @@ class Products extends Component {
                         />
                       </Link>
 
-                      <label>Cost: ${product.price/100}</label>
+                      <label>Cost: ${product.price / 100}</label>
                       { product.inventory > 0 ?
                         <p>In stock</p> :
                         <p>Out of stock</p>
@@ -83,7 +83,7 @@ class Products extends Component {
                         {
                           Array(5).fill('filler').map((element, index) => {
                             return (
-                              <i className="glyphicon glyphicon-star" key={index}> </i>
+                              <i className="glyphicon glyphicon-star" key={index} />
                             )
                           })
                         }
@@ -108,7 +108,7 @@ const mapState = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch,ownProps) => {
+const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     fetchAllProducts() {
       dispatch(fetchProducts())
