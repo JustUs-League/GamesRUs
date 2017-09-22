@@ -1,5 +1,7 @@
 const nodemailer = require('nodemailer')
 
+
+
 const transporter = nodemailer.createTransport({
   host: 'smtp.gmail.com',
   port: 465,
@@ -15,8 +17,8 @@ const confEmail = (orderInfo) => {
     from: 'Erasers!Eraser!Erasers! <AllAboutErasers@gmail.com>',
     to: orderInfo.email,
     subject: 'Order Confirmation ',
-    text: `Thank you for your order, ${orderInfo.name}! You'll receive another e-mail when your order ships`,
-    html: `<p>Thank you for your order, ${orderInfo.name}! You'll receive another e-mail when your order ships</p>`
+    text:`Thank you for your order, ${orderInfo.name}! You'll receive another e-mail when your order ships`,
+    html:`<p>Thank you for your order, ${orderInfo.name}! You'll receive another e-mail when your order ships</p>`
   }
 }
 
@@ -25,8 +27,8 @@ const shipEmail = (orderInfo) => {
     from: 'Erasers!Eraser!Erasers! <AllAboutErasers@gmail.com>',
     to: orderInfo.email,
     subject: 'Order Shipped',
-    text: `We're please to inform you your eraser order has shipped! Tracking info not available due to delivery by drone. You're welcome`,
-    html: `<p>We're please to inform you your eraser order has shipped! Tracking info not available due to delivery by drone. You're welcome</p>`
+    text:`We're please to inform you your eraser order has shipped! Tracking info not available due to delivery by drone. You're welcome`,
+    html:`<p>We're please to inform you your eraser order has shipped! Tracking info not available due to delivery by drone. You're welcome</p>`
   }
 }
 

@@ -9,7 +9,7 @@ router.get('/', (req, res, next) => {
     where: {
       orderId: orderId
     },
-    include: [Product]
+    include:[Product]
   })
     .then((lineitem) => {
       return res.status(200).json(lineitem)
@@ -21,7 +21,7 @@ router.get('/:orderId', (req, res, next) => {
   const orderId = +req.params.orderId
   LineItem.findAll({
     where: {orderId},
-    include: [Product]
+    include:[Product]
   })
     .then(lineitem => {
       return res.status(200).json(lineitem)

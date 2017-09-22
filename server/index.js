@@ -22,6 +22,7 @@ module.exports = app
  */
 if (process.env.NODE_ENV !== 'production') require('../secrets')
 
+
 // passport registration
 passport.serializeUser((user, done) => done(null, user.id))
 passport.deserializeUser((id, done) =>
@@ -53,6 +54,7 @@ const createApp = () => {
 
   // static file-serving middleware
   app.use(express.static(path.join(__dirname, '..', 'public')))
+  app.use(express.static(path.join(__dirname, '..', 'node_modules')))
 
   // sends index.html
   app.use('*', (req, res) => {
@@ -65,9 +67,7 @@ const createApp = () => {
     console.error(err.stack)
     res.status(err.status || 500).send(err.message || 'Internal server error.')
   })
-}
 
-const startListening = () => {
   // start listening (and create a 'server' object representing our server)
   const server = app.listen(PORT, () => console.log(`Mixing it up on port ${PORT}`))
 
@@ -86,7 +86,6 @@ if (require.main === module) {
   sessionStore.sync()
     .then(syncDb)
     .then(createApp)
-    .then(startListening)
 } else {
-  createApp()
+  createApp(app)
 }
