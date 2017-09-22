@@ -29,7 +29,7 @@ router.get('/', (req, res, next) => {
 router.get('/active', (req, res, next) => {
   const active = {}
   //this is a cheat because in the real world this would
-  if (req.user) {
+  if(req.user) {
     active.status = 'active'
     active.userId = req.user.id
 
@@ -39,10 +39,10 @@ router.get('/active', (req, res, next) => {
         return order
       }).then(order => res.json(order))
       .catch(next)
-  } else {
+  }else{
   /// ugh but it works for now - would like to refactor
     Order.findById(req.session.order.id)
-      .then(order => {
+      .then((order)=>{
         req.session.order = order
         return res.json(order)
       })
@@ -97,8 +97,8 @@ router.put('/validate', (req, res, next) => {
 router.post('/', (req, res, next) => {
 
 
-  if (!req.session.order){
-    if (req.user){
+  if(!req.session.order){
+    if(req.user){
       req.body.userId = req.user.id
     }
     Order.create(req.body)
@@ -107,16 +107,16 @@ router.post('/', (req, res, next) => {
         return res.json(order)
       })
       .catch(next)
-  } else if (req.user && req.session.order.status === 'active'){
+  }else if(req.user && req.session.order.status === 'active'){
     ///update user
-    Order.update({userId: req.user.id}, {
-      where: {
+    Order.update({userId: req.user.id},{
+      where:{
         id: req.session.order.id
       }
     }).then(order => res.json(order))
       .catch(next)
-  } else if (req.session.order.status !== 'active'){
-    if (req.user){
+  }else if(req.session.order.status !== 'active'){
+    if(req.user){
       req.body.userId = req.user.id
     }
     Order.create(req.body)
@@ -125,10 +125,12 @@ router.post('/', (req, res, next) => {
         return res.json(order)
       })
       .catch(next)
-  } else {
+  }else{
     return res.json(req.session)
   }
 })
+
+
 
 router.delete('/:orderId', (req, res, next) => {
   req.order.destroy()
@@ -141,4 +143,5 @@ router.put('/filter', (req, res, next) => {
   .then(filteredOrders => res.json(filteredOrders))
   .catch(next)
 })
+
 

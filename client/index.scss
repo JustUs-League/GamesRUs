@@ -1,5 +1,41 @@
+*{
+padding:auto;
+margin:auto;
+}
+
+html, body {
+   background-color: white;
+   padding: 0;
+   margin: 0;
+}
+
+
+
+.container{
+  width:80%;
+}
+
 body {
-  font-family: sans-serif;
+  font-family: 'Gill Sans', sans-serif;
+
+  .productsTitle {
+
+  font-size: 375%;
+  text-align: center;
+  padding-bottom: 15px;
+  }
+
+
+  .products_image {
+    width: 80%;
+    height: 80%;
+    align-content: center;
+  }
+   .single_product_image {
+    width: 50%;
+    height: 50%;
+    align-content: center;
+  }
 
   a {
     text-decoration: none;
@@ -8,6 +44,7 @@ body {
   label {
     display: block;
   }
+
 
   nav a {
     display: inline-block;
@@ -18,4 +55,10 @@ body {
     margin: 1em;
     display: inline-block;
   }
+}
+
+
+
+.formEmail, .formPassword, .formName {
+  width: 500px;
 }
