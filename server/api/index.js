@@ -1,11 +1,7 @@
 const router = require('express').Router()
 module.exports = router
 
-router.use('/users', require('./users'))
-router.use('/products', require('./products'))
-router.use('/lineitems', require('./lineitems'))
-router.use('/orders', require('./orders'))
-router.use('/reviews', require('./reviews'))
+router.use('/games', require('./games'))
 
 
 router.use((req, res, next) => {
