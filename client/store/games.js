@@ -1,29 +1,29 @@
 /* -----------------    IMPORTS     ------------------ */
 import axios from 'axios'
-// import history from '../history'
+
 
 /* -----------------    ACTION TYPES     ------------------ */
-const GET_ACCOUNT = 'GET_ACCOUNT'
+const GET_GAMES = 'GET_GAMES'
 
 
 /* ------------   ACTION CREATORS     ------------------ */
-const getAccount = user => ({type: GET_ACCOUNT, user})
+const getGames = games => ({type: GET_GAMES, games})
 
 
 /* ------------       THUNK CREATORS     ------------------ */
-export const fetchAccount = email =>
+export const loadGames = () =>
   dispatch =>
-    axios.post('/api/users', {email})
+    axios.get('/api/games')
       .then(res =>
-        dispatch(getAccount(res.data)))
+        dispatch(getGames(res.data)))
       .catch(err => console.log(err))
 
 
 /* ------------       REDUCERS     ------------------ */
-export default function (state = {}, action) {
+export default function (state = [], action) {
   switch (action.type) {
-  case GET_ACCOUNT:
-    return action.user
+  case GET_GAMES:
+    return action.games
   default:
     return state
   }
