@@ -4,5 +4,5 @@
  * having to figure out which file they belong to!
  */
 export {default as Main} from './Main'
-export {default as Games} from './Games'
+export {default as Game} from './Game'
 

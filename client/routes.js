@@ -1,9 +1,8 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {Router} from 'react-router-dom'
-import {Route, Switch} from 'react-router-dom'
+import {Router, Route, Switch} from 'react-router-dom'
 import history from './history'
-import {Main, Games} from './components'
+import {Main, Game} from './components'
 
 /**
  * COMPONENT
@@ -13,21 +12,17 @@ class Routes extends Component {
     super(props)
   }
 
-  componentDidMount () {
-  }
-
   render () {
     return (
       <Router history={history}>
-        <Main>
           <div>
             <Switch>
               {/* Routes placed here are available to all visitors */}
-              <Route path="/games" component={Games} />
-              <Route component={Games} />
+              <Route exact path="/" component={Main} />
+              <Route path="/game/:gameId" component={Game} />
+              <Route component={Main} />
             </Switch>
           </div>
-        </Main>
       </Router>
     )
   }
