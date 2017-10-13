@@ -1,57 +1,41 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import {connect} from 'react-redux'
-import {withRouter, Link} from 'react-router-dom'
-import {logout} from '../store'
-import Navbar from './Navbar'
+import React, {Component} from 'react'
+import axios from 'axios'
 
-/**
- * COMPONENT
- *  The Main component is our 'picture frame' - it displays the navbar and anything
- *  else common to our entire app. The 'picture' inside the frame is the space
- *  rendered out by the component's `children`.
- */
-const Main = (props) => {
-
-  const {children, handleClick, isLoggedIn} = props
-
-  return (
-    <div>
-
-      <Navbar />
-
-
-      {children}
-    </div>
-  )
-}
-
-/**
- * CONTAINER
- */
-const mapState = (state) => {
-  return {
-    isLoggedIn: !!state.user.id
-  }
-}
-
-const mapDispatch = (dispatch) => {
-  return {
-    handleClick () {
-      dispatch(logout())
+export default class Main extends Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      games: []
     }
   }
-}
 
-// The `withRouter` wrapper makes sure that updates are not blocked
-// when the url changes
-export default withRouter(connect(mapState, mapDispatch)(Main))
+  componentDidMount (){
+    axios.get('/api/games')
+    .then(res => res.data)
+    .then(games => {
+      this.setState({
+        games
+      })
+    })
+  }
 
-/**
- * PROP TYPES
- */
-Main.propTypes = {
-  children: PropTypes.object,
-  handleClick: PropTypes.func.isRequired,
-  isLoggedIn: PropTypes.bool.isRequired
+  render () {
+
+    const games = this.state.games
+
+    return (
+      <div>
+        {games.map(game => {
+          return (
+              <div key={game.id} className="item">
+                <img src={game.cover && game.cover.url.slice(2)} />
+                <h4>Name: {game.name}</h4>
+                <h6>Summary: {game.summary}</h6>
+                <h5>Popularity: {game.popularity}</h5>
+              </div>
+            )
+        })}
+      </div>
+    )
+  }
 }
