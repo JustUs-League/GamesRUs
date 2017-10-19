@@ -2,6 +2,7 @@ const router = require('express').Router()
 module.exports = router
 
 router.use('/games', require('./games'))
+router.use('/characters', require('./characters'))
 
 
 router.use((req, res, next) => {

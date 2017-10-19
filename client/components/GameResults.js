@@ -1,33 +1,20 @@
 import React, {Component} from 'react'
-import axios from 'axios'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 
-export default class Main extends Component {
+class GameResults extends Component {
   constructor (props) {
     super(props)
-    this.state = {
-      games: []
-    }
-  }
-
-  componentDidMount (){
-    axios.get('/api/games')
-    .then(res => res.data)
-    .then(games => {
-      this.setState({
-        games
-      })
-    })
   }
 
   render () {
 
-    const games = this.state.games.filter(game => game.popularity > 1.25)
+    const searchedGames = this.props.searchedGames
 
     return (
-      <div>
+      <div className="container">
         <h1>List of Games from IDGB.com: </h1>
-        {games.map(game => {
+        {searchedGames && searchedGames.map(game => {
           return (
             <div key={game.id} className="item">
               <img className="game-img" src={game.cover && 'https:' + game.cover.url} />
@@ -42,3 +29,17 @@ export default class Main extends Component {
     )
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    games: state.games,
+    searchedGames: state.gameSearch
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(GameResults)

@@ -25,8 +25,6 @@ export default class Game extends Component {
   render () {
     const game = this.state.selectedGame
 
-    console.log('Game....', this.state.selectedGame)
-
     return (
       <div>
         <img className="game-img" src={game.cover && 'https:' + game.cover.url} height="300" width="300" />
