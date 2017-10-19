@@ -3,27 +3,27 @@ import axios from 'axios'
 
 
 /* -----------------    ACTION TYPES     ------------------ */
-const GET_GAMES = 'GET_GAMES'
+const SEARCH_CHARACTER = 'SEARCH_CHARACTER'
 
 
 /* ------------   ACTION CREATORS     ------------------ */
-const getGames = games => ({type: GET_GAMES, games})
+const searchCharacter = character => ({type: SEARCH_CHARACTER, character})
 
 
 /* ------------       THUNK CREATORS     ------------------ */
-export const loadGames = () =>
+export const findCharacter = (search) =>
   dispatch =>
-    axios.get('/api/games')
+    axios.post('/api/character/search', search)
     .then(res =>
-      dispatch(getGames(res.data)))
+      dispatch(searchCharacter(res.data)))
     .catch(err => console.log(err))
 
 
 /* ------------       REDUCERS     ------------------ */
 export default function (state = [], action) {
   switch (action.type) {
-  case GET_GAMES:
-    return action.games
+  case SEARCH_CHARACTER:
+    return action.character
   default:
     return state
   }

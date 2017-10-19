@@ -3,6 +3,10 @@
  * This way, we can import all of our components from the same place, rather than
  * having to figure out which file they belong to!
  */
-export {default as Main} from './Main'
+export {default as Home} from './Home'
 export {default as Game} from './Game'
+export {default as GameImage} from './GameImage'
+export {default as GameSearch} from './GameSearch'
+export {default as GameResults} from './GameResults'
+export {default as Navbar} from './Navbar'
 
