@@ -2,9 +2,11 @@ const path = require('path')
 const express = require('express')
 const morgan = require('morgan')
 const bodyParser = require('body-parser')
+const db = require('./db/_db')
 const PORT = 8080
 const app = express()
 module.exports = app
+
 
 const createApp = () => {
   // logging middleware
@@ -32,7 +34,7 @@ const createApp = () => {
     console.error(err.stack)
     res.status(err.status || 500).send(err.message || 'Internal server error.')
   })
-
+  db.sync({ force: true });
   // start listening (and create a 'server' object representing our server)
   app.listen(PORT, () => console.log(`Mixing it up on port ${PORT}`))
 
