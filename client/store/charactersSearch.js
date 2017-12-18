@@ -3,27 +3,27 @@ import axios from 'axios'
 
 
 /* -----------------    ACTION TYPES     ------------------ */
-const SEARCH_CHARACTER = 'SEARCH_CHARACTER'
+const SEARCH_CHARACTERS = 'SEARCH_CHARACTERS'
 
 
 /* ------------   ACTION CREATORS     ------------------ */
-const searchCharacter = character => ({type: SEARCH_CHARACTER, character})
+const searchCharacters = characters => ({type: SEARCH_CHARACTERS, characters})
 
 
 /* ------------       THUNK CREATORS     ------------------ */
-export const findCharacter = (search) =>
+export const findCharacters = (search) =>
   dispatch =>
-    axios.post('/api/character/search', search)
+    axios.post('/api/characters/search', search)
     .then(res =>
-      dispatch(searchCharacter(res.data)))
+      dispatch(searchCharacters(res.data)))
     .catch(err => console.log(err))
 
 
 /* ------------       REDUCERS     ------------------ */
 export default function (state = [], action) {
   switch (action.type) {
-  case SEARCH_CHARACTER:
-    return action.character
+  case SEARCH_CHARACTERS:
+    return action.characters
   default:
     return state
   }

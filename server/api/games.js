@@ -8,13 +8,13 @@ router.get('/', (req, res, next) => {
       filters: {
           'release_dates.date-gt': '1980-12-31',
           'release_dates.date-lt': '2017-10-01',
-          'popularity-gt': '1.6'
+          'aggregated_rating-gt': '80'
       },
       fields: '*', // Return all fields
       limit: 25, // Limit to 5 results
       offset: 10, // Index offset for results
       search: 'zelda darksouls',  // Search for only 'zelda' and 'darksoul' series
-      order: 'popularity:desc'
+      order: 'aggregated_rating:desc'
     })
     .then(response => {
         // response.body contains the parsed JSON response to this query
@@ -41,13 +41,13 @@ router.post('/search', (req, res, next) => {
       filters: {
           'release_dates.date-gt': '1980-12-31',
           'release_dates.date-lt': '2017-10-01',
-          'popularity-gt': '1.1'
+          'aggregated_rating-gt': '1.1'
       },
       fields: '*',
       limit: 25,
       offset: 10,
       search: req.body.search,
-      order: 'popularity:desc'
+      order: 'aggregated_rating:desc'
     })
     .then(response => {
         res.json(response.body)

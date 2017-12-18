@@ -4,12 +4,12 @@ import thunkMiddleware from 'redux-thunk'
 
 import games from './games'
 import gameSearch from './gameSearch'
-import characterSearch from './characterSearch'
+import charactersSearch from './charactersSearch'
 
 const reducer = combineReducers({
 	games,
 	gameSearch,
-	characterSearch
+	charactersSearch
 })
 
 const middleware = applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
@@ -19,4 +19,4 @@ export default store
 
 export * from './games'
 export * from './gameSearch'
-export * from './characterSearch'
+export * from './charactersSearch'
