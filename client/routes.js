@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {Router, Route, Switch} from 'react-router-dom'
 import history from './history'
 import {Home, Game, GameSearch, Navbar} from './components'
+import { loadGames } from './store'
 
 /**
  * COMPONENT
@@ -12,19 +13,25 @@ class Routes extends Component {
     super(props)
   }
 
+  componentDidMount (){
+    this.props.loadAllGames()
+  }
+
   render () {
     return (
       <Router history={history}>
-          <div>
-            <Navbar />
-            <Switch>
-              {/* Routes placed here are available to all visitors */}
-              <Route exact path="/home" component={Home} />
-              <Route exact path="/game/gameSearch" component={GameSearch} />
-              <Route exact path="/game/:gameId" component={Game} />
-              <Route component={Home} />
-            </Switch>
-          </div>
+        <div>
+          <Navbar />
+            <div className="container">
+              <Switch>
+                {/* Routes placed here are available to all visitors */}
+                <Route exact path="/home" component={Home} />
+                <Route exact path="/game/gameSearch" component={GameSearch} />
+                <Route exact path="/game/:gameId" component={Game} />
+                <Route component={Home} />
+              </Switch>
+            </div>
+        </div>
       </Router>
     )
   }
@@ -40,6 +47,9 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
   return {
+    loadAllGames() {
+      dispatch(loadGames())
+    }
   }
 }
 

@@ -12,7 +12,7 @@ class GameResults extends Component {
     const searchedGames = this.props.searchedGames
 
     return (
-      <div className="container">
+      <div>
         <h1>List of Games from IDGB.com: </h1>
         {searchedGames && searchedGames.map(game => {
           return (

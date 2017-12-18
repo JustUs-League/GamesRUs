@@ -20,7 +20,7 @@ class CharacterSearch extends Component {
 
 	render () {
 		return (
-			<div className="container">
+			<div>
         <form onSubmit={ this.handleSubmit }>
             <div>
               <h4>Search: </h4>
