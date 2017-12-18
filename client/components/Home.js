@@ -17,7 +17,7 @@ class Home extends Component {
     const games = this.props.games.filter(game => game.popularity > 1.25)
 
     return (
-      <div className="container">
+      <div >
         <h1>List of Games from IDGB.com: </h1>
         {games.map(game => {
           return (
