@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Router, Route, Switch} from 'react-router-dom'
 import history from './history'
-import {Home, Game, GameSearch, Navbar} from './components'
+import {Home, Game, GameSearch, Navbar, CharactersSearch} from './components'
 import { loadGames } from './store'
 
 /**
@@ -28,6 +28,7 @@ class Routes extends Component {
                 <Route exact path="/home" component={Home} />
                 <Route exact path="/game/gameSearch" component={GameSearch} />
                 <Route exact path="/game/:gameId" component={Game} />
+                <Route exact path="/characters/charactersSearch" component={CharactersSearch} />
                 <Route component={Home} />
               </Switch>
             </div>

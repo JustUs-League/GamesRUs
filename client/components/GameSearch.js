@@ -25,9 +25,8 @@ class GameSearch extends Component {
         <form onSubmit={ this.handleSubmit }>
             <div>
               <h4>Search: </h4>
-              <textarea
+              <input
                 type="text"
-                rows="1" cols="100"
                 placeholder="Search"
                 name="search"
               />

@@ -9,4 +9,6 @@ export {default as GameImage} from './GameImage'
 export {default as GameSearch} from './GameSearch'
 export {default as GameResults} from './GameResults'
 export {default as Navbar} from './Navbar'
+export {default as CharactersSearch} from './CharactersSearch'
+export {default as CharactersResults} from './CharactersResults'
 
