@@ -3,6 +3,11 @@ const db = require('../_db');
 
 
 const Review = db.define('review', {
+  reviewId: {
+    type: INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
+  },
   title: {
     type: STRING,
     allowNull: false
@@ -22,7 +27,7 @@ const Review = db.define('review', {
     }
   },
   gameId: {
-    type: INTEGER,
+    type: STRING,
     allowNull: false,
   },
 });

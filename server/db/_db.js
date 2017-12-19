@@ -4,8 +4,7 @@ const databaseURI = 'postgres://localhost:5432/GamesRUs';
 //don't forget to make the DB Dennis....
 const db = new Sequelize(databaseURI, {
   define: {
-    timestamps: false,
-    underscored: true
+    timestamps: false
   },
   logging: false
 });

@@ -1,9 +1,14 @@
-const { STRING, BOOLEAN }= require('sequelize');
+const { STRING, BOOLEAN, INTEGER }= require('sequelize');
 const crypto = require('crypto');
 const db = require('../_db');
 
 
 const User = db.define('user', {
+  userId: {
+    type: INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
+  },
   name: {
     type: STRING,
     allowNull: false,
@@ -17,6 +22,27 @@ const User = db.define('user', {
   isAdmin: BOOLEAN,
   password: STRING,
   salt: STRING,
+},{
+  defaultScope: {
+    attributes: ['name', 'isAdmin', 'userId', 'phone', 'email '],
+  },
+  scopes:{
+    withOrders: {
+      include: [{
+        model: db.Order,
+      }]
+    },
+    withReview: {
+      include: [{
+        model: db.Review,
+      }]
+    },
+    withAll: {
+      include: [
+      { model: db.Order },
+      { model: db.Review}
+      ]}
+  },
 });
 
 
