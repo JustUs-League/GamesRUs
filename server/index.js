@@ -34,7 +34,7 @@ const createApp = () => {
     console.error(err.stack)
     res.status(err.status || 500).send(err.message || 'Internal server error.')
   })
-  db.sync({ force: true });
+  db.sync();
   // start listening (and create a 'server' object representing our server)
   app.listen(PORT, () => console.log(`Mixing it up on port ${PORT}`))
 

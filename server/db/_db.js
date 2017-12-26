@@ -6,7 +6,7 @@ const db = new Sequelize(databaseURI, {
   define: {
     timestamps: false
   },
-  logging: false
+  logging: true
 });
 
 module.exports = db;
